@@ -3,6 +3,11 @@ type: docker
 name: drone-test
 
 steps:
+- name: test
+  image: node
+  commands:
+  - npm install
+  - npm test
 - name: trigger  
   image: plugins/downstream
   settings:
