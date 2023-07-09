@@ -1,0 +1,18 @@
+kind: pipeline
+type: docker
+name: drone-test
+
+steps:
+- name: test
+  image: node
+  commands:
+  - npm install
+  - npm test
+- name: trigger  
+  image: plugins/downstream
+  settings:
+    server: http://51.250.65.79
+    token: VAOtYCPqBN76lBtCyQA1JXJJVh3W4lvI
+    fork: true
+    repositories:
+      - developer-jfr/triggered-repo
